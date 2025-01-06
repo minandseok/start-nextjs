@@ -1,4 +1,4 @@
-import { API_URL } from "../../../../(home)/page";
+import { API_URL } from "../../../../constants";
 import { Iparams } from "../page";
 
 async function getProviders(id: string) {
@@ -6,7 +6,8 @@ async function getProviders(id: string) {
   return response.json();
 }
 
-export default async function Providers({ params: { id } }: Iparams) {
+export default async function Providers({ params }: Iparams) {
+  const { id } = await params;
   const providers = await getProviders(id);
   return (
     <div>
